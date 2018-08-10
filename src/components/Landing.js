@@ -11,7 +11,7 @@ const Landing = () => (
     </div>
     <div className="point">
       <h2 className="point-title">Unlimted, streaming, ad-free</h2>
-      <p className="point-description">Listen to your music on the go.
+      <p className="point-description">Listen to your music on the go.</p>
     </div>
   </section>
   </section>
