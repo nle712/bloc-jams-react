@@ -8,6 +8,6 @@ class Album extends Component {
       </section>
     );
   }
-} 
+}
 
 export default Album;
