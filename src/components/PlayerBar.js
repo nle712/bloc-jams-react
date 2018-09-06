@@ -11,8 +11,8 @@ class PlayerBar extends Component {
           <button id="play-pause" onClick={this.props.handleSongClick} >
             <span className={this.props.isPlaying ? 'icon ion-md-pause' : 'icon ion-md-play'}></span>
           </button>
-          <button id="next">
-            <span className="ion-skip-forward"></span>
+          <button id="next" onClick={this.props.handleNextClick}>
+            <span className="ion-md-skip-forward" ></span>
           </button>
         </section>
         <section id="time-control">
@@ -21,9 +21,9 @@ class PlayerBar extends Component {
           <div className="total-time">–:––</div>
         </section>
         <section id="volume-control">
-          <div className="icon ion-volume-low"></div>
+          <div className="icon ion-md-volume-low"></div>
           <input type="range" className="seek-bar" defaultValue="80" />
-          <div className="icon ion-volume-high"></div>
+          <div className="icon ion-md-volume-high"></div>
         </section>
       </section>
     );
