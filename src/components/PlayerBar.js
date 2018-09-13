@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class PlayerBar extends Component {
+
+    formatTime(time) {
+      let min = Math.floor(time / 60);
+      let seconds = time - min * 60;
+      seconds= seconds.toFixed(0);
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      let formattedTime = `${min}:${seconds}`;
+      if (isNaN(time)) {
+        formattedTime = '-:--';
+      }
+      return formattedTime;
+    }
+
   render() {
     return (
       <section className="player-bar">
@@ -16,7 +31,7 @@ class PlayerBar extends Component {
           </button>
         </section>
         <section id="time-control">
-          <div className="current-time">{this.props.currentTime}</div>
+          <div className="current-time">{this.formatTime(this.props.currentTime)}</div>
           <input
             type="range"
             className="seek-bar"
