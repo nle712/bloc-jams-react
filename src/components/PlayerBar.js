@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class PlayerBar extends Component {
+
+    formatTime(time) {
+      let min = Math.floor(time / 60);
+      let seconds = time - min * 60;
+      seconds= seconds.toFixed(0);
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      let formattedTime = `${min}:${seconds}`;
+      if (isNaN(time)) {
+        formattedTime = '-:--';
+      }
+      return formattedTime;
+    }
+
   render() {
     return (
       <section className="player-bar">
@@ -16,13 +31,29 @@ class PlayerBar extends Component {
           </button>
         </section>
         <section id="time-control">
-          <div className="current-time">–:––</div>
-          <input type="range" className="seek-bar" defaultValue="0" />
-          <div className="total-time">–:––</div>
+          <div className="current-time">{this.formatTime(this.props.currentTime)}</div>
+          <input
+            type="range"
+            className="seek-bar"
+            value={(this.props.currentTime / this.props.duration) || 0}
+            max="1"
+            min="0"
+            step="0.01"
+            onChange={this.props.handleTimeChange}
+          />
+          <div className="total-time">{this.props.duration}</div>
         </section>
         <section id="volume-control">
-          <div className="icon ion-md-volume-low"></div>
-          <input type="range" className="seek-bar" defaultValue="80" />
+          <div className="icon ion-md-volume-low">{this.props.volume}</div>
+          <input
+            type="range"
+            className="seek-bar"
+            defaultValue={this.props.volume}
+            max="1"
+            min="0"
+            step="0.01"
+            onChange={this.props.handleVolumeChange}
+          />
           <div className="icon ion-md-volume-high"></div>
         </section>
       </section>
