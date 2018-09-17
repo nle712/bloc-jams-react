@@ -33,7 +33,7 @@ class Song extends Component {
       >
         {this.renderIcons()}
         <td>{this.props.data.title}</td>
-        <td>{this.props.data.duration}</td>
+        <td>{this.props.formatTime(this.props.data.duration)}</td>
       </tr>
     );
   }
