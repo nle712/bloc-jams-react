@@ -103,6 +103,20 @@ class Album extends Component {
     this.setState({ volume:newVolume })
    }
 
+   formatTime(time) {
+     let min = Math.floor(time / 60);
+     let seconds = time - min * 60;
+     seconds= seconds.toFixed(0);
+     if (seconds < 10) {
+       seconds = '0' + seconds;
+     }
+     let formattedTime = `${min}:${seconds}`;
+     if (isNaN(time)) {
+       formattedTime = '-:--';
+     }
+     return formattedTime;
+   }
+
   render() {
     return (
       <section className="album container" >
@@ -132,6 +146,7 @@ class Album extends Component {
                   number={index + 1}
                   handleClick={this.handleSongClick.bind(this)}
                   isPlaying={song === this.state.currentSong && this.state.isPlaying}
+                  formatTime={this.formatTime.bind(this)}
                 />
               )
             }
@@ -143,6 +158,7 @@ class Album extends Component {
           currentTime={this.state.currentTime}
           duration={this.state.duration}
           volume={this.state.volume}
+          formatTime={this.formatTime.bind(this)}
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
