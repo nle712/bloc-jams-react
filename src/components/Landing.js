@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Landing = () => (
-  <section className="landing">
+  <section className="landing p-3 mb-2 bg-info text-white">
     <h1 className="hero-title">Turn the music up!</h1>
     <section className="selling-points">
       <div className="point">

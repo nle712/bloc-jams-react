@@ -119,7 +119,7 @@ class Album extends Component {
 
   render() {
     return (
-      <section className="album container" >
+      <section className="album p-3 mb-2 bg-secondary text-white" >
         <section id="album-info">
           <img id="album-cover-art"
             src={this.state.album.albumCover}
